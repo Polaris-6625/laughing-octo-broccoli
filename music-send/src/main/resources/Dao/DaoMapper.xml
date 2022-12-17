@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.musicsend.Dao.DaoMapper">
+
+
+    <select id="getAllList" resultType="com.example.musicsend.MusicReal">
+        select * from menu_list;
+    </select>
+</mapper>

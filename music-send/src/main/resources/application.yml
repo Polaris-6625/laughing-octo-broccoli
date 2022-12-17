@@ -1,0 +1,43 @@
+#端口号
+server:
+  port: 8083
+#nacos的注册地址和配置地址
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+    #开启sentinel
+    sentinel:
+      enabled: true
+      transport:
+        dashboard: 127.0.0.1:8849 # 连接dashboard
+        port: 8719
+    #服务名称
+    application:
+      name: music-send
+  #开启feign的降级
+  feign:
+    hystrix:
+      enabled: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: 100ms
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/music_menu?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&tinyInt1isBit=false
+    username: root
+    password: 123456
+
+
+mybatis:
+  mapper-locations: classpath:Dao/*.xml
