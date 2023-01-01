@@ -1,27 +1,59 @@
-#端口号
+#???
 server:
   port: 8083
-#nacos的注册地址和配置地址
+#nacos??????????
 spring:
+  application:
+    name: music
   cloud:
     nacos:
+#      config:
+#        # 配置中心服务地址
+#        server-addr: 127.0.0.1:8848
+#        # 指定后缀名
+#        file-extension: yml
+#        # 指定命名空间
+#        namespace: e3d505d8-b5de-420c-ae71-795f14e3ec14
+#        # 指定所属分组
+#        group: send
+#        # 拓展分组
+#        extension-configs:
+#          # 拓展数据源相关配置，其中data-id为nacos中配置的Data ID，为dev分组，开启热更新
+#          - dataId: database.yml
+#            group: dev
+#            refresh: true
+#          # 拓展nacos相关配置，其中data-id为nacos中配置的Data ID，为dev分组，开启热更新
+#          - dataId: nacos.yml
+#            group: dev
+#            refresh: true
+#          # 拓展其他相关配置，其中data-id为nacos中配置的Data ID，为dev分组，开启热更新
+#          - dataId: other.yml
+#            group: dev
+#            refresh: true
+
       discovery:
         server-addr: 127.0.0.1:8848
-      config:
-        server-addr: 127.0.0.1:8848
-    #开启sentinel
-    sentinel:
-      enabled: true
-      transport:
-        dashboard: 127.0.0.1:8849 # 连接dashboard
-        port: 8719
-    #服务名称
-    application:
-      name: music-send
-  #开启feign的降级
-  feign:
-    hystrix:
-      enabled: true
+        namespace: e3d505d8-b5de-420c-ae71-795f14e3ec14
+      username: nacos
+      password: nacos
+    #      config:
+#        server-addr: 127.0.0.1:8848
+#        namespace: e3d505d8-b5de-420c-ae71-795f14e3ec14
+#        file-extension: yaml
+#      username: nacos
+#      password: nacos
+#    #??sentinel
+#    sentinel:
+#      enabled: true
+#      transport:
+#        dashboard: 127.0.0.1:8849 # ??dashboard
+#        port: 8719
+    #????
+
+#  #??feign???
+#  feign:
+#    hystrix:
+#      enabled: true
   redis:
     host: 127.0.0.1
     port: 6379
@@ -41,3 +73,16 @@ spring:
 
 mybatis:
   mapper-locations: classpath:Dao/*.xml
+
+
+#server.port=8091
+#
+#spring.application.name=music
+#
+#spring.cloud.nacos.discovery.server-addr=localhost:8848
+#
+#spring.cloud.nacos.username=nacos
+#
+#spring.cloud.nacos.password=nacos
+
+

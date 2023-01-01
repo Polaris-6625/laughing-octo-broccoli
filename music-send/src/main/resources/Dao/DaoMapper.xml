@@ -8,4 +8,7 @@
     <select id="getAllList" resultType="com.example.musicsend.MusicReal">
         select * from menu_list;
     </select>
+    <select id="getPagingList" resultType="com.example.musicsend.MusicReal">
+        select * from menu_list limit #{start},#{end};
+    </select>
 </mapper>

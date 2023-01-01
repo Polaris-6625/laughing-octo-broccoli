@@ -14,6 +14,7 @@ public class sendMusic {
     @GetMapping("/music")
     @ResponseBody
     public byte[] sendMusic(String musicName) throws Exception {
+        // /home/ubuntu/static/
         String basic = "C:\\Users\\l2281\\IdeaProjects\\static\\";
         basic = basic + musicName + ".mp3";
         File file = new File(basic);
