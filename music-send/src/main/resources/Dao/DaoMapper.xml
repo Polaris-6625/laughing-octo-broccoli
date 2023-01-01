@@ -5,10 +5,10 @@
 <mapper namespace="com.example.musicsend.Dao.DaoMapper">
 
 
-    <select id="getAllList" resultType="com.example.musicsend.MusicReal">
+    <select id="getAllList" resultType="com.example.musicsend.Unity.MusicReal">
         select * from menu_list;
     </select>
-    <select id="getPagingList" resultType="com.example.musicsend.MusicReal">
+    <select id="getPagingList" resultType="com.example.musicsend.Unity.MusicReal">
         select * from menu_list limit #{start},#{end};
     </select>
 </mapper>

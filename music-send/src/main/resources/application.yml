@@ -4,7 +4,7 @@ server:
 #nacos??????????
 spring:
   application:
-    name: music
+    name: music-send
   cloud:
     nacos:
 #      config:
