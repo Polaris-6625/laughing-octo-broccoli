@@ -21,9 +21,20 @@ public class SelectMusicController {
     @PostMapping("/searchMusic")
     @ResponseBody
     public String getMuiscBySearch(String flag){
-        System.out.println(flag);
+//        System.out.println("flag is "+flag);
         List<MusicInf> musicInfs = daoMapper.getMusicInf(flag);
-        String json = JSON.toJSONString(musicInfs);
-        return json;
+        if (musicInfs.isEmpty()) {
+            MusicInf musicInf = new MusicInf();
+            musicInf.setId(0);
+            musicInf.setName("");
+            musicInf.setAuthor("");
+            String json = JSON.toJSONString(musicInf);
+            return json;
+        }
+        else {
+            String json = JSON.toJSONString(musicInfs);
+//            System.out.println(json);
+            return json;
+        }
     }
 }
