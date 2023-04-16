@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.musicuser.Dao.DaoMapper">
+
+    <insert id="UserRegist">
+        insert into user (username,password,root,sex,permissions) values (#{username},#{password},#{root},#{sex},#{permissions});
+    </insert>
+    <update id="createTable_history">
+        create TABLE ${root_History} (
+            id int PRIMARY KEY AUTO_INCREMENT,
+            username varchar(255),
+            history varchar(255)
+        );
+    </update>
+    <update id="createTable_collection">
+        create TABLE ${root_collection} (
+            id int PRIMARY KEY AUTO_INCREMENT,
+            username varchar(255),
+            collection varchar(255)
+        );
+    </update>
+    <select id="checkUser" resultType="com.example.musicuser.Unity.User">
+        select * from user where root = #{root} and password = #{password};
+    </select>
+    <select id="getRoot" resultType="java.lang.String">
+        select username from user where username = #{root};
+    </select>
+    <select id="getPermissions" resultType="java.lang.String">
+        select permissions from user where root = #{root};
+    </select>
+</mapper>
