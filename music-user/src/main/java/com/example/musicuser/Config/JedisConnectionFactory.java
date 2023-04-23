@@ -17,7 +17,7 @@ public class JedisConnectionFactory {
         jedisPoolConfig.setMinIdle(0);
         // 设置最长等待时间
         jedisPoolConfig.setMaxWaitMillis(200);
-        jedisPool = new JedisPool(jedisPoolConfig,"127.0.0.1",16379,1000);
+        jedisPool = new JedisPool(jedisPoolConfig,"127.0.0.1",6379,1000);
     }
     public static Jedis getJedis()
     {

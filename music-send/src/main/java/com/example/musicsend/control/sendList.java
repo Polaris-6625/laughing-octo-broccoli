@@ -16,7 +16,7 @@ public class sendList {
     @Autowired
     private DaoMapper daoMapper;
 
-    @CrossOrigin
+    @CrossOrigin("*")
     @GetMapping("/musicList")
     @ResponseBody
     public String getMusicList() {

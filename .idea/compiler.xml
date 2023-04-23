@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="music-send" />
         <module name="music-user" />
+        <module name="DailySharing" />
         <module name="music-search" />
       </profile>
     </annotationProcessing>
@@ -16,6 +17,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Android-music-cloudServer" options="" />
+      <module name="DailySharing" options="-parameters" />
       <module name="music-search" options="-parameters" />
       <module name="music-send" options="-parameters" />
       <module name="music-user" options="-parameters" />

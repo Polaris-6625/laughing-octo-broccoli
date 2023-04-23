@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class SelectMusicController {
     @Autowired
     private DaoMapper daoMapper;
 
-
-    @CrossOrigin(origins = "*")
     @PostMapping("/searchMusic")
     @ResponseBody
     public String getMuiscBySearch(String flag){

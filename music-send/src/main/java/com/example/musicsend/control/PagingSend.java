@@ -14,7 +14,7 @@ public class PagingSend {
     @Autowired
     private DaoMapper daoMapper;
 
-    @CrossOrigin(origins = "*")
+    @CrossOrigin("*")
     @PostMapping("/getPaging")
     @ResponseBody
     public String retrunPaging(String val_flag) {

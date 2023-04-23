@@ -21,6 +21,7 @@
         <module>music-send</module>
         <module>music-search</module>
         <module>music-user</module>
+        <module>DailySharing</module>
     </modules>
 
     <properties>

@@ -1,5 +1,6 @@
 package com.example.musicuser.Control;
 
+import com.alibaba.fastjson.JSON;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.example.musicuser.Config.JedisConnectionFactory;
@@ -16,9 +17,12 @@ import redis.clients.jedis.Jedis;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @Controller
 public class MusicController {
 
@@ -32,7 +36,6 @@ public class MusicController {
         return "成功访问";
     }
 
-    @CrossOrigin
     @PostMapping("/regist")
     @ResponseBody
     public String registUser(String username,String root,String password,String sex,String checkText) {
@@ -55,7 +58,6 @@ public class MusicController {
         }
     }
 
-    @CrossOrigin
     @GetMapping("/getRegisterCaptcha")
     @ResponseBody
     public void getCaptcha(HttpServletRequest request, HttpServletResponse response) {
@@ -83,7 +85,7 @@ public class MusicController {
 
     }
 
-    @CrossOrigin
+
     @GetMapping("/getLoginCaptcha")
     @ResponseBody
     public void getLoginCaptcha(HttpServletRequest request, HttpServletResponse response) {
@@ -111,9 +113,10 @@ public class MusicController {
 
     }
 
-    @CrossOrigin
+
     @PostMapping("/Login")
     @ResponseBody
+    @CrossOrigin(origins = "*",maxAge = 3600)
     public String LoginFunction(String root, String password, String Captcha) {
         Jedis jedis = JedisConnectionFactory.getJedis();
         System.out.println(jedis.get("Captcha:"+Captcha));
@@ -136,13 +139,19 @@ public class MusicController {
                         .withHeader(map) // header可以不写，因为默认值就是它
                         .withClaim("username", daoMapper.getRoot(root))  //payload
                         .withClaim("root", root)
+                        .withClaim("password", password)
                         .withClaim("permissions",daoMapper.getPermissions(root))
                         .withExpiresAt(instance.getTime()) // 指定令牌的过期时间
                         .sign(Algorithm.HMAC256("LyyWebSite"));//签名
 
-                System.out.println(token);
+//                System.out.println(token);
                 //jedis.set("",token);
-                return token;
+//                return token;
+                HashMap<String,String> list = new HashMap<>();
+                list.put("token",token);
+                list.put("root",root);
+                list.put("username",daoMapper.getRoot(root));
+                return JSON.toJSONString(list);
             }
         }
         else {
